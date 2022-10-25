@@ -2,13 +2,14 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import logo from "../assets/img/hanq_logo.png";
 
 function NavigationBar() {
   return (
     <Navbar expand="lg" className="navbar">
       <Container>
         <Navbar.Brand href="#home">
-          <img src="../assets/img/hanq_logo.png" height="30" className="d-inline-block"></img>
+          <img src={logo} height="30" className="d-inline-block"></img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

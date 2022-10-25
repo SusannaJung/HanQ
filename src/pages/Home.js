@@ -91,9 +91,9 @@ const Home = () => {
           }
         }}
         ViewFinder={ScanOverlay}
-        videoContainerStyle={{ padding: "0%", position: "relative" }}
-        videoStyle={{ position: "relative", width: "100%", height: "auto" }}
-        containerStyle={{ position: "relative", width: "100%", height: "auto" }}
+        videoContainerStyle={{ padding: "0%", position: "relative", width: "100%", height: "100%" }}
+        videoStyle={{ position: "relative", width: "100%", height: "100%" }}
+        containerStyle={{ position: "relative", width: "70vw", height: "70vw" }}
       />
       <p>{data}</p>
     </div>
