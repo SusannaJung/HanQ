@@ -8,7 +8,7 @@ function NavigationBar() {
     <Navbar expand="lg" className="navbar">
       <Container>
         <Navbar.Brand href="#home">
-          <img src="https://raw.githubusercontent.com/SusannaJung/Java-Workbook/master/hanq_logo.png?token=GHSAT0AAAAAAB2G7H3QXPSW73X3JTMJTQAUY2SOVXQ" height="30" className="d-inline-block"></img>
+          <img src="../assets/img/hanq_logo.png" height="30" className="d-inline-block"></img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
