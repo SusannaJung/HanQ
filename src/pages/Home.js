@@ -1,12 +1,48 @@
 import "../assets/css/home.css";
-import { useState } from "react";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { QrReader } from "react-qr-reader";
 import Form from "react-bootstrap/Form";
 import ScanOverlay from "../components/ScanOverlay";
 
+import useSound from 'use-sound'
+import success from './success.mp3'
+import failed from './failed.mp3'
+
 const Home = () => {
-  const [data, setData] = useState("No result");
+  const [sending, setSending] = useState(false);
+  const [data, setData] = useState(null);
   const [selected, setSelected] = useState("environment");
+  const [response, setResponse] = useState(null);
+
+  const [playSuccess] = useSound(success);
+  const [playFailed] = useSound(failed);
+
+  useEffect(() => {
+    if(data !== null)
+      sendCode(data);
+  }, [data]);
+
+  useEffect(() => {
+    console.log("response = ", response);
+    if(response !== null) {
+      if(response == 'Checked...') {
+        playSuccess();
+      }
+      else {
+        playFailed();
+      }
+    }
+  }, [response]);
+
+  const sendCode = async (data) => {
+    setResponse(null);
+    const headers = { 'Content-Type' : 'application/json' };
+    setSending(true);
+    await axios.post("http://walab.handong.edu:8080/HanQ/log", {event_id: 1, code: data}, {headers})
+      .then(res => setResponse(res.data));
+    setSending(false);
+  }
 
   return (
     <div className="home">
@@ -18,11 +54,13 @@ const Home = () => {
       <QrReader
         className="QrReader"
         constraints={{ facingMode: selected }}
-        scanDelay={10000}
+        scanDelay={500}
         onResult={(result, error) => {
           if (!!result) {
             setData(result?.text);
-            console.log(result);
+          }
+          if(!!error) {
+            console.log("info", error);
           }
         }}
         ViewFinder={ScanOverlay}
