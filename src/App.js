@@ -12,7 +12,8 @@ function App() {
       <BrowserRouter>
         <NavigationBar></NavigationBar>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route index element={<Home />} />
+          <Route path={process.env.REACT_APP_DEFAULT_URL + "/"} element={<Home />} />
           {/* <Route path="/admin" element={<Admin />} /> */}
         </Routes>
         <Footer></Footer>

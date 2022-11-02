@@ -1,7 +1,6 @@
 // import node module libraries
 import React from "react";
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 
 const Footer = () => {
