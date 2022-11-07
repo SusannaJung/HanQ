@@ -66,7 +66,8 @@ const Home = () => {
     setResponse(null);
     const headers = { "Content-Type": "application/json" };
     setSending(true);
-    await axios.post("http://walab.handong.edu:8080/HanQ/log", { event_id: 1, code: data }, { headers }).then((res) => setResponse(res.data));
+    //await axios.post("https://hanq.walab.kro.kr:8443/log", { event_id: 1, code: data }, { headers }).then((res) => setResponse(res.data));
+    await axios.post(process.env.REACT_APP_RESTAPI_HOST + "log", { event_id: 1, code: data }, { headers }).then((res) => setResponse(res.data));
     setSending(false);
   };
 
